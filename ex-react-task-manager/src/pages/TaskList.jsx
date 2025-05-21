@@ -7,25 +7,20 @@ function TaskList() {
   return (
     <div>
       <h2>Lista dei Task</h2>
-
-      {tasks.lenght === 0 ? (
-        <p>Nessuna task presente.</p>
-      ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Stato</th>
-              <th>Data di creazione</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tasks.map((task) => (
-              <TaskRow key={task.id} task={task} />
-            ))}
-          </tbody>
-        </table>
-      )}
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Stato</th>
+            <th>Data di creazione</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tasks.map((task) => (
+            <TaskRow key={task.id} task={task} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

@@ -1,27 +1,13 @@
-import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import { createContext } from "react";
+import useTasks from "../hooks/useTasks";
 
 export const GlobalContext = createContext();
 
-export const GlobalProvider = ({ children }) => {
-  const [tasks, setTasks] = useState([]);
-
-  useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/tasks`);
-        setTasks(res.data);
-        console.log("Dati ricevuti:", res.data);
-      } catch (error) {
-        console.error("Errore durante il recupero dei dati:", error);
-      }
-    };
-    fetchTasks();
-  }, []);
-
+export function GlobalProvider({ children }) {
+  const taskData = useTasks();
   return (
-    <GlobalContext.Provider value={{ tasks, setTasks }}>
+    <GlobalContext.Provider value={{ ...taskData }}>
       {children}
     </GlobalContext.Provider>
   );
-};
+}

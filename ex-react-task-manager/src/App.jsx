@@ -8,14 +8,8 @@ function App() {
     <GlobalProvider>
       <BrowserRouter>
         <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Task List</NavLink>
-            </li>
-            <li>
-              <NavLink to="/add">Aggiungi Task</NavLink>
-            </li>
-          </ul>
+          <NavLink to="/">Task List</NavLink>
+          <NavLink to="/add">Aggiungi Task</NavLink>
         </nav>
 
         <Routes>
