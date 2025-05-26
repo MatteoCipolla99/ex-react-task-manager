@@ -17,8 +17,8 @@ export default function useTasks() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTask),
     });
-    const { succes, message, task } = await response.json();
-    if (!succes) throw new Error(message);
+    const { success, message, task } = await response.json();
+    if (!success) throw new Error(message);
 
     setTasks((prev) => [...prev, task]);
   };
@@ -27,8 +27,8 @@ export default function useTasks() {
     const response = await fetch(`${VITE_API_URL}/tasks/${taskId}`, {
       method: `DELETE`,
     });
-    const { succes, message } = await response.json();
-    if (!succes) throw new Error(message);
+    const { success, message } = await response.json();
+    if (!success) throw new Error(message);
     setTasks((prev) => prev.filter((task) => task.id !== taskId));
   };
 
